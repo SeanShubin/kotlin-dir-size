@@ -3,7 +3,7 @@ package com.seanshubin.dir.size.domain
 import java.lang.RuntimeException
 
 object HumanizedLimitParser :LimitParser{
-    private const val scales = "kmtpezy" //kilo, mega, tera, peta, exa, zetta, yotta
+    private const val scales = "kmgtpezy" //kilo, mega, giga, tera, peta, exa, zetta, yotta
     private val regexes = listOf(Regex("""(\d+)""")) + scales.map { Regex("""(\d+)\s*$it""") }
     override fun parse(limitString: String): Long{
         var scale:Long = 1
