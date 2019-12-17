@@ -23,7 +23,7 @@ class Dependencies(args:Array<String>){
     private val treeBuilder:TreeBuilder = TreeBuilderFromFiles(files, notifications::consideringPath)
     private val tableFormatter:TableFormatter = RowStyleTableFormatter.boxDrawing
     private val emitReportLine:(String)->Unit=reportLogger::log
-    private val limitParser:LimitParser = HumanizedLimitParser
+    private val scaleUtil:ScaleUtil = HumanizedScaleUtil
     val runner:Runnable = Runner(
-            baseDir, limitString, limitParser, treeBuilder, tableFormatter, emitReportLine)
+            baseDir, limitString, scaleUtil, treeBuilder, tableFormatter, emitReportLine)
 }

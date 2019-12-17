@@ -2,7 +2,7 @@ package com.seanshubin.dir.size.domain
 
 import java.lang.RuntimeException
 
-object HumanizedLimitParser :LimitParser{
+object HumanizedScaleUtil :ScaleUtil{
     private const val scales = "kmgtpezy" //kilo, mega, giga, tera, peta, exa, zetta, yotta
     private val regexes = listOf(Regex("""(\d+)""")) + scales.map { Regex("""(\d+)\s*$it""") }
     override fun parse(limitString: String): Long{
@@ -17,5 +17,9 @@ object HumanizedLimitParser :LimitParser{
             }
         }
         throw RuntimeException("Unable to interpret limit '$limitString'")
+    }
+
+    override fun approximate(value: Long): String {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

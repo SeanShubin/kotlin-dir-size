@@ -7,12 +7,12 @@ import java.nio.file.Path
 
 class Runner(private val baseDir: Path,
              private val limitString:String,
-             private val limitParser:LimitParser,
+             private val scaleUtil:ScaleUtil,
              private val treeBuilder: TreeBuilder,
              private val tableFormatter:TableFormatter,
              private val emitReportLine:(String)->Unit) :Runnable{
     override fun run() {
-        val limit = limitParser.parse(limitString)
+        val limit = scaleUtil.parse(limitString)
         val tree = treeBuilder.buildTree(baseDir)
         val list = tree.toList().filter {it.size >= limit}.sortedWith(Value.descendingBySize)
         val rows = list.map(::toRow)
