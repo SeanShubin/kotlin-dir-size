@@ -24,5 +24,5 @@ class Runner(private val baseDir: Path,
     private fun toRow(value:Value):List<Any> = listOf(
             Left(value.path),
             Left(value.type),
-            Right(String.format("%,d", value.size)))
+            Right(String.format("%,d (${scaleUtil.approximate(value.size)})", value.size)))
 }
